@@ -14,6 +14,6 @@ public class MarkerTest {
 	@Test
 	void testMoveLeft() {
 		Marker marker = new Marker(3);
-		assertEquals(new Marker(4), marker.moveLeft());
+		assertEquals(new Marker(2), marker.moveLeft());
 	}
 }
