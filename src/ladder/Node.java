@@ -5,8 +5,18 @@ import java.util.Objects;
 public class Node {
 	private Direction direction;
 
-	Node(Direction direction) {
+	private Node(Direction direction) {
 		this.direction = direction;
+	}
+
+	static Node createCenterNode(){
+		return new Node(Direction.CENTER);
+	}
+	static Node createRightNode(){
+		return new Node(Direction.RIGHT);
+	}
+	static Node createLeftNode(){
+		return new Node(Direction.LEFT);
 	}
 
 	void changeRight() {
@@ -15,6 +25,16 @@ public class Node {
 
 	void changeLeft() {
 		this.direction = Direction.LEFT;
+	}
+
+	Marker move(Marker marker) {
+		if(this.direction == Direction.RIGHT){
+			return marker.moveRight();
+		}
+		if (this.direction == Direction.LEFT) {
+			return marker.moveLeft();
+		}
+		return marker;
 	}
 
 	enum Direction {
