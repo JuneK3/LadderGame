@@ -1,5 +1,7 @@
 package ladder;
 
+import core.NaturalNumber;
+
 public class Marker extends NaturalNumber {
 
 	public Marker(int number) {
