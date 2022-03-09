@@ -19,7 +19,6 @@ public class LadderTest {
 		}
 	}
 
-
 	@Test
 	public void testRunWhenNoLine() {
 		Ladder ladder = new Ladder(new NaturalNumber(1), new NaturalNumber(3));

@@ -46,4 +46,12 @@ public class NodeTest {
 		Marker marker = node.move(new Marker(3));
 		assertEquals(new Marker(3), marker);
 	}
+
+	@Test
+	void testAppendSymbol() {
+		StringBuilder sb = new StringBuilder();
+		Node node = Node.createCenterNode();
+		node.appendSymbol(sb);
+		assertEquals("0", sb.toString());
+	}
 }
