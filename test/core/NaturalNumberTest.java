@@ -28,4 +28,10 @@ public class NaturalNumberTest {
 		NaturalNumber number = new NaturalNumber(3);
 		assertEquals(2, number.toArrayIndex());
 	}
+
+	@Test
+	void testFromArrayIndex() {
+		NaturalNumber number = NaturalNumber.createFromArrayIndex(1);
+		assertEquals(new NaturalNumber(2), number);
+	}
 }

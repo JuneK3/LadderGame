@@ -14,6 +14,10 @@ public class NaturalNumber {
 		this.number = number;
 	}
 
+	public static NaturalNumber createFromArrayIndex(int index) {
+		return new NaturalNumber(index + 1);
+	}
+
 	public int getNumber() {
 		return number;
 	}

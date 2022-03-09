@@ -12,11 +12,11 @@ public class Ladder {
 		}
 	}
 
-	public static String generate(Row[] rows, NaturalNumber height, NaturalNumber noOfPerson) {
+	public static String generate(Row[] rows, Position position) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < rows.length; i++) {
 			Row row = rows[i];
-			row.generateRow(height, noOfPerson, sb, i);
+			row.generateRow(sb, i, position);
 		}
 		return sb.toString();
 	}
@@ -38,7 +38,7 @@ public class Ladder {
 		for (int i = 0; i < rows.length; i++) {
 			Row row = rows[i];
 			nthPerson = row.move(nthPerson);
-			String result = generate(rows, new NaturalNumber(i+1), nthPerson);
+			String result = generate(rows, Position.createFromArrayIndex(i, nthPerson.toArrayIndex()));
 			System.out.println(result);
 		}
 		return nthPerson;

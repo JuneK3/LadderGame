@@ -45,12 +45,12 @@ public class Row {
 		return nodes[marker.toArrayIndex()].move(marker);
 	}
 
-	void generateRow(NaturalNumber height, NaturalNumber noOfPerson, StringBuilder sb, int currentHeight) {
+	void generateRow(StringBuilder sb, int currentHeight, Position position) {
 		for (int j = 0; j < nodes.length; j++) {
 			Node node = nodes[j];
 			node.appendSymbol(sb);
 
-			if (height.toArrayIndex() == currentHeight && noOfPerson.toArrayIndex() == j) {
+			if (position.equals(Position.createFromArrayIndex(currentHeight, j))) {
 				sb.append("*");
 			}
 			sb.append(" ");
