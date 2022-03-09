@@ -79,4 +79,25 @@ public class LadderTest {
 		assertEquals(ladder.run(new Marker(3)), new Marker(2));
 		assertEquals(ladder.run(new Marker(4)), new Marker(3));
 	}
+
+	@Test
+	void testGenerateWhenNoLine() {
+		Row[] rows = new Row[3];
+		for (int i = 0; i < rows.length; i++) {
+			rows[i] = new Row(new NaturalNumber(3));
+		}
+		String result = Ladder.generate(rows, new NaturalNumber(1), new NaturalNumber(1));
+		assertEquals("0* 0 0 \n0 0 0 \n0 0 0 \n", result);
+	}
+
+	@Test
+	void testGenerateWhenLineExists() {
+		Row[] rows = new Row[3];
+		for (int i = 0; i < rows.length; i++) {
+			rows[i] = new Row(new NaturalNumber(3));
+		}
+		rows[0].drawLine(new NaturalNumber(1));
+		String result = Ladder.generate(rows, new NaturalNumber(1), new NaturalNumber(1));
+		assertEquals("1* -1 0 \n0 0 0 \n0 0 0 \n", result);
+	}
 }

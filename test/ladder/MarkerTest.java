@@ -16,4 +16,6 @@ public class MarkerTest {
 		Marker marker = new Marker(3);
 		assertEquals(new Marker(2), marker.moveLeft());
 	}
+
+
 }

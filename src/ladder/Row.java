@@ -12,6 +12,10 @@ public class Row {
 		}
 	}
 
+	public Node[] getNodes(){
+		return this.nodes;
+	}
+
 	public void drawLine(NaturalNumber startPosition) {
 		int startIndex = startPosition.toArrayIndex();
 		if (isOverNoOfPerson(startIndex)) {
