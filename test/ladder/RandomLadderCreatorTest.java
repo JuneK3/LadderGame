@@ -1,5 +1,6 @@
 package ladder;
 
+import core.NaturalNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
@@ -7,16 +8,21 @@ import java.util.Random;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RandomLadderCreatorTest {
+
 	@Test
 	void testGenerateStartPosition() {
-		for (int i=0; i<10; i++){
-			System.out.println(randInt(1, 20));
+		RandomLadderCreator creator = new RandomLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+		int[] positions = creator.generatePositions();
+		for (int i=0; i<positions.length; i++){
+			System.out.println(String.format("position: %d", positions[i]));
 		}
 	}
 
-	public static int randInt(int min, int max){
-		Random rand = new Random();
-		int randNum = rand.nextInt((max - min) + 1) + min;
-		return randNum;
+	@Test
+	void testCountOfLine() {
+		int countOfLine = RandomLadderCreator.getCountOfLine(new NaturalNumber(20), 0.3);
+		assertEquals(6, countOfLine);
+		countOfLine = RandomLadderCreator.getCountOfLine(new NaturalNumber(5), 0.3);
+		assertEquals(1, countOfLine);
 	}
 }

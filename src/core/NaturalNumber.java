@@ -38,4 +38,8 @@ public class NaturalNumber {
 	public int hashCode() {
 		return Objects.hash(number);
 	}
+
+	public NaturalNumber multiply(NaturalNumber operand) {
+		return new NaturalNumber(this.number * operand.getNumber());
+	}
 }
