@@ -1,6 +1,9 @@
-package ladder;
+package creator;
 
 import core.NaturalNumber;
+import ladder.LadderSize;
+import ladder.Position;
+import ladder.Row;
 
 import java.util.Random;
 
@@ -9,7 +12,7 @@ public class RandomLadderCreator implements LadderCreator {
 	private Row[] rows;
 	private LadderSize ladderSize;
 
-	RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+	public RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
 
 		this.ladderSize = LadderSize.create(height, noOfPerson);
 		rows = new Row[height.getNumber()];
@@ -51,7 +54,7 @@ public class RandomLadderCreator implements LadderCreator {
 		return this.rows;
 	}
 
-	Position[] generateStartPositions() {
+	public Position[] generateStartPositions() {
 		NaturalNumber[] numbers = generateRandomPositions();
 		return toPositions(numbers);
 	}

@@ -1,9 +1,9 @@
-package ladder;
+package creator;
 
 import core.NaturalNumber;
+import creator.RandomLadderCreator;
+import ladder.Position;
 import org.junit.jupiter.api.Test;
-
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 

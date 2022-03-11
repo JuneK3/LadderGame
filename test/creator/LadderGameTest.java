@@ -1,8 +1,10 @@
-package ladder;
+package creator;
 
 import core.NaturalNumber;
+import ladder.LadderGame;
+import ladder.Marker;
 import org.junit.jupiter.api.Test;
-import static ladder.LadderGame.LadderType.*;
+import static creator.LadderCreatorFactory.LadderType.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

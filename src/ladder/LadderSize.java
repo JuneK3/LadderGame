@@ -11,11 +11,11 @@ public class LadderSize {
 		this.noOfPerson = noOfPerson;
 	}
 
-	static LadderSize create(int height, int noOfPerson) {
+	public static LadderSize create(int height, int noOfPerson) {
 		return create(new NaturalNumber(height), new NaturalNumber(noOfPerson));
 	}
 
-	static LadderSize create(NaturalNumber height, NaturalNumber noOfPerson) {
+	public static LadderSize create(NaturalNumber height, NaturalNumber noOfPerson) {
 		return new LadderSize(height, noOfPerson);
 	}
 
@@ -32,7 +32,7 @@ public class LadderSize {
 		return new NaturalNumber(remainder);
 	}
 
-	Position getPosition(NaturalNumber currentTotalPosition){
+	public Position getPosition(NaturalNumber currentTotalPosition){
 		return Position.create(getPositionOfHeight(currentTotalPosition), getPositionOfPerson(currentTotalPosition));
 	}
 
@@ -44,7 +44,7 @@ public class LadderSize {
 		return this.noOfPerson;
 	}
 
-	int getCountOfLine(double ratio) {
+	public int getCountOfLine(double ratio) {
 		NaturalNumber totalPositions = getTotalPosition();
 		return (int) (totalPositions.getNumber() * ratio);
 	}
@@ -53,7 +53,7 @@ public class LadderSize {
 		return height.multiply(noOfPerson);
 	}
 
-	boolean isMultipleOfPerson(NaturalNumber randomPosition) {
+	public boolean isMultipleOfPerson(NaturalNumber randomPosition) {
 		int remainder = randomPosition.getNumber() % noOfPerson.getNumber();
 		if (remainder == 0){
 			return true;
