@@ -13,8 +13,15 @@ public class RandomLadderCreatorTest {
 	void testGenerateStartPosition() {
 		RandomLadderCreator creator = new RandomLadderCreator(LadderSize.create(3, 4));
 		Position[] positions = creator.generatePositions();
-		for (int i=0; i<positions.length; i++){
+		for (int i = 0; i < positions.length; i++) {
 			System.out.println(String.format("position: %s", positions[i]));
 		}
+	}
+
+	@Test
+	void testIsExisted() {
+		NaturalNumber[] startPositions = {new NaturalNumber(2), new NaturalNumber(3)};
+		assertTrue(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(2)));
+		assertFalse(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(4)));
 	}
 }

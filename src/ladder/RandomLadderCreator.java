@@ -19,6 +19,15 @@ public class RandomLadderCreator {
 		}
 	}
 
+	public static boolean isExisted(NaturalNumber[] startPositions, NaturalNumber randomPosition) {
+		for (NaturalNumber each : startPositions) {
+			if (randomPosition.equals(each)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	void drawLine(NaturalNumber row, NaturalNumber col) {
 		if (rowIsOverLimit(row)) {
 			throw new IllegalArgumentException(String.format(
@@ -36,7 +45,7 @@ public class RandomLadderCreator {
 		return this.rows;
 	}
 
-	Position[] generatePositions(){
+	Position[] generatePositions() {
 		NaturalNumber[] numbers = generateRandomPositions();
 		return toPositions(numbers);
 	}
@@ -45,16 +54,39 @@ public class RandomLadderCreator {
 		NaturalNumber totalPositions = ladderSize.getTotalPosition();
 		int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
 		NaturalNumber[] startPositions = new NaturalNumber[countOfLine];
-		for (int i=0; i<startPositions.length; i++){
-			startPositions[i] = randInt(1, totalPositions.getNumber());
-			System.out.println(String.format("random position: %s", startPositions[i]));
-		}
-		return startPositions;
- 	}
+		int i = 0;
 
-	Position[] toPositions(NaturalNumber[] positions){
+		do {
+			NaturalNumber randomPosition = randInt(1, totalPositions.getNumber());
+			if (ladderSize.isMultipleOfPerson(randomPosition)) {
+				continue;
+			}
+			if (isExisted(startPositions, randomPosition)) {
+				continue;
+			}
+			if (isExisted(startPositions, new NaturalNumber(randomPosition.getNumber() + 1))) {
+				continue;
+			}
+			if (randomPosition.equals(new NaturalNumber(1))) {
+				startPositions[i] = randomPosition;
+				System.out.println(String.format("random position: %s", startPositions[i]));
+				i++;
+			} else {
+				if (isExisted(startPositions, new NaturalNumber(randomPosition.getNumber() - 1))) {
+					continue;
+				}
+				startPositions[i] = randomPosition;
+				System.out.println(String.format("random position: %s", startPositions[i]));
+				i++;
+			}
+		} while (i < countOfLine);
+
+		return startPositions;
+	}
+
+	Position[] toPositions(NaturalNumber[] positions) {
 		Position[] startPositions = new Position[positions.length];
-		for (int i=0; i<positions.length; i++){
+		for (int i = 0; i < positions.length; i++) {
 			startPositions[i] = ladderSize.getPosition(positions[i]);
 		}
 		return startPositions;
