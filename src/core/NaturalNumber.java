@@ -42,4 +42,9 @@ public class NaturalNumber {
 	public NaturalNumber multiply(NaturalNumber operand) {
 		return new NaturalNumber(this.number * operand.getNumber());
 	}
+
+	@Override
+	public String toString() {
+		return String.format("NaturalNumber [number=%d]", number);
+	}
 }

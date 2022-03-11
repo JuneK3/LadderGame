@@ -44,4 +44,9 @@ public class Position {
 	public int hashCode() {
 		return Objects.hash(height, noOfPerson);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Position [height=%s, noOfPerson=%s]", height, noOfPerson);
+	}
 }
