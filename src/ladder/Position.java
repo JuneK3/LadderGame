@@ -49,4 +49,12 @@ public class Position {
 	public String toString() {
 		return String.format("Position [height=%s, noOfPerson=%s]", height, noOfPerson);
 	}
+
+	public NaturalNumber getHeight() {
+		return this.height;
+	}
+
+	public NaturalNumber getNthOfPerson() {
+		return this.noOfPerson;
+	}
 }

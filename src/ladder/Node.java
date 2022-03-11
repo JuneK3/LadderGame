@@ -5,9 +5,7 @@ import java.util.Objects;
 public class Node {
 	enum Direction {
 		LEFT(-1), CENTER(0), RIGHT(1);
-
 		private int symbol;
-
 		Direction(int symbol) {
 			this.symbol = symbol;
 		}

@@ -11,8 +11,8 @@ public class RandomLadderCreatorTest {
 
 	@Test
 	void testGenerateStartPosition() {
-		RandomLadderCreator creator = new RandomLadderCreator(LadderSize.create(3, 4));
-		Position[] positions = creator.generatePositions();
+		RandomLadderCreator creator = new RandomLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+		Position[] positions = creator.generateStartPositions();
 		for (int i = 0; i < positions.length; i++) {
 			System.out.println(String.format("position: %s", positions[i]));
 		}

@@ -12,7 +12,11 @@ public class LadderSize {
 	}
 
 	static LadderSize create(int height, int noOfPerson) {
-		return new LadderSize(new NaturalNumber(height), new NaturalNumber(noOfPerson));
+		return create(new NaturalNumber(height), new NaturalNumber(noOfPerson));
+	}
+
+	static LadderSize create(NaturalNumber height, NaturalNumber noOfPerson) {
+		return new LadderSize(height, noOfPerson);
 	}
 
 	NaturalNumber getPositionOfHeight(NaturalNumber currentTotalPositions) {
