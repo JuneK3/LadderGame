@@ -2,7 +2,7 @@ package ladder;
 
 import core.NaturalNumber;
 
-public class ManualLadderCreator {
+public class ManualLadderCreator implements LadderCreator {
 	private Row[] rows;
 
 	public ManualLadderCreator(NaturalNumber cntOfRow, NaturalNumber noOfPerson) {
@@ -12,6 +12,11 @@ public class ManualLadderCreator {
 		}
 	}
 
+	private boolean rowIsOverLimit(NaturalNumber row) {
+		return row.toArrayIndex() > rows.length - 1;
+	}
+
+	@Override
 	public void drawLine(NaturalNumber row, NaturalNumber col) {
 		if (rowIsOverLimit(row)) {
 			throw new IllegalArgumentException(String.format(
@@ -21,10 +26,7 @@ public class ManualLadderCreator {
 		rows[row.toArrayIndex()].drawLine(col);
 	}
 
-	private boolean rowIsOverLimit(NaturalNumber row) {
-		return row.toArrayIndex() > rows.length - 1;
-	}
-
+	@Override
 	public Row[] getRows() {
 		return this.rows;
 	}
