@@ -1,12 +1,15 @@
 package creator;
 
 import core.NaturalNumber;
+import ladder.LadderSize;
 import ladder.Row;
 
 public class ManualLadderCreator implements LadderCreator {
 	private Row[] rows;
+	private LadderSize ladderSize;
 
 	public ManualLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+		ladderSize = LadderSize.create(height, noOfPerson);
 		rows = new Row[height.getNumber()];
 		for (int i = 0; i < height.getNumber(); i++) {
 			rows[i] = new Row(noOfPerson);
@@ -30,5 +33,9 @@ public class ManualLadderCreator implements LadderCreator {
 	@Override
 	public Row[] getRows() {
 		return this.rows;
+	}
+
+	public LadderSize getLadderSize() {
+		return ladderSize;
 	}
 }

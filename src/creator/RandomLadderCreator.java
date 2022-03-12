@@ -7,18 +7,28 @@ import ladder.Row;
 
 import java.util.Random;
 
-public class RandomLadderCreator extends ManualLadderCreator implements LadderCreator {
+public class RandomLadderCreator implements LadderCreator {
 	public static final double DEFAULT_LINE_RATIO = 0.3;
 	private LadderSize ladderSize;
+	private LadderCreator ladderCreator;
 
-	public RandomLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
-		super(height, noOfPerson);
-		this.ladderSize = LadderSize.create(height, noOfPerson);
+	public RandomLadderCreator(LadderCreator ladderCreator) {
+		this.ladderCreator = ladderCreator;
+		this.ladderSize = ladderCreator.getLadderSize();
 
 		Position[] startPositions = generateStartPositions();
 		for (Position position : startPositions) {
-			super.drawLine(position.getHeight(), position.getNthOfPerson());
+			ladderCreator.drawLine(position.getHeight(), position.getNthOfPerson());
 		}
+	}
+
+	public Row[] getRows(){
+		return ladderCreator.getRows();
+	}
+
+	@Override
+	public LadderSize getLadderSize() {
+		return this.ladderSize;
 	}
 
 	@Override

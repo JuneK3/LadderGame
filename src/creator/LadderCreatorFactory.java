@@ -5,7 +5,8 @@ import ladder.LadderGame;
 
 public class LadderCreatorFactory {
 	static LadderGame randomLadderGame(NaturalNumber height, NaturalNumber noOfPerson){
-		RandomLadderCreator ladderCreator = new RandomLadderCreator(height, noOfPerson);
+		ManualLadderCreator manualLadderCreator = new ManualLadderCreator(height, noOfPerson);
+		RandomLadderCreator ladderCreator = new RandomLadderCreator(manualLadderCreator);
 		return new LadderGame(ladderCreator);
 	}
 
