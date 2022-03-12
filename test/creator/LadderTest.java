@@ -1,7 +1,6 @@
 package creator;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static creator.LadderCreatorFactory.LadderType.*;
 import core.NaturalNumber;
 import ladder.LadderGame;
 import ladder.Marker;
@@ -13,7 +12,8 @@ public class LadderTest {
 	@Test
 	public void testDrawLineWhenRowIsOverLimit() {
 		try {
-			LadderGame ladderGame = new LadderGame(new NaturalNumber(4), new NaturalNumber(3), MANUAL);
+			ManualLadderCreator ladderCreator = new ManualLadderCreator(new NaturalNumber(4), new NaturalNumber(3));
+			LadderGame ladderGame = new LadderGame(ladderCreator);
 			ladderGame.drawLine(new NaturalNumber(5), new NaturalNumber(2));
 			fail("IllegalArgumentException 에러가 발생해야함");
 		} catch (IllegalArgumentException e) {
@@ -24,7 +24,8 @@ public class LadderTest {
 
 	@Test
 	public void testRunWhenNoLine() {
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(1), new NaturalNumber(3), MANUAL);
+		ManualLadderCreator ladderCreator = new ManualLadderCreator(new NaturalNumber(1), new NaturalNumber(3));
+		LadderGame ladderGame = new LadderGame(ladderCreator);
 		Marker target = ladderGame.run(new Marker(1));
 		assertEquals(new Marker(1), target);
 
@@ -35,14 +36,16 @@ public class LadderTest {
 	@Test
 	public void testRunWhenLineLeft() {
 		// 1 -1 0
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(1), new NaturalNumber(3), MANUAL);
+		ManualLadderCreator ladderCreator = new ManualLadderCreator(new NaturalNumber(1), new NaturalNumber(3));
+		LadderGame ladderGame = new LadderGame(ladderCreator);
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 
 		Marker target = ladderGame.run(new Marker(2));
 		assertEquals(new Marker(1), target);
 
 		// 0 1 -1
-		ladderGame = new LadderGame(new NaturalNumber(1), new NaturalNumber(3), MANUAL);
+		ladderCreator = new ManualLadderCreator(new NaturalNumber(1), new NaturalNumber(3));
+		ladderGame = new LadderGame(ladderCreator);
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(2));
 
 		target = ladderGame.run(new Marker(3));
@@ -52,14 +55,16 @@ public class LadderTest {
 	@Test
 	public void testRunWhenLineRight() {
 		// 0 1 1
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(1), new NaturalNumber(3), MANUAL);
+		ManualLadderCreator ladderCreator = new ManualLadderCreator(new NaturalNumber(1), new NaturalNumber(3));
+		LadderGame ladderGame = new LadderGame(ladderCreator);
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(2));
 
 		Marker target = ladderGame.run(new Marker(2));
 		assertEquals(new Marker(3), target);
 
 		// 1 1 0
-		ladderGame = new LadderGame(new NaturalNumber(1), new NaturalNumber(3), MANUAL);
+		ladderCreator = new ManualLadderCreator(new NaturalNumber(1), new NaturalNumber(3));
+		ladderGame = new LadderGame(ladderCreator);
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 
 		target = ladderGame.run(new Marker(1));
@@ -71,9 +76,8 @@ public class LadderTest {
 		// 1 1 0 0
 		// 0 1 1 0
 		// 0 0 1 1
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), MANUAL);
-		Marker result = ladderGame.run(new Marker(2));
-		System.out.println(result);
+		ManualLadderCreator ladderCreator = new ManualLadderCreator(new NaturalNumber(3), new NaturalNumber(4));
+		LadderGame ladderGame = new LadderGame(ladderCreator);
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 		ladderGame.drawLine(new NaturalNumber(2), new NaturalNumber(2));
 		ladderGame.drawLine(new NaturalNumber(3), new NaturalNumber(3));

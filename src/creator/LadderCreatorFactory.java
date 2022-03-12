@@ -1,18 +1,16 @@
 package creator;
 
 import core.NaturalNumber;
+import ladder.LadderGame;
 
 public class LadderCreatorFactory {
-	public enum LadderType {
-		MANUAL, RANDOM;
+	static LadderGame randomLadderGame(NaturalNumber height, NaturalNumber noOfPerson){
+		RandomLadderCreator ladderCreator = new RandomLadderCreator(height, noOfPerson);
+		return new LadderGame(ladderCreator);
 	}
 
-	private LadderCreator ladderCreator;
-
-	public static LadderCreator newLadderCreator(NaturalNumber height, NaturalNumber noOfPerson, LadderType type) {
-		if (type == LadderType.MANUAL) {
-			return new ManualLadderCreator(height, noOfPerson);
-		}
-		return new RandomLadderCreator(height, noOfPerson);
+	static LadderGame manualLadderGame(NaturalNumber height, NaturalNumber noOfPerson){
+		ManualLadderCreator ladderCreator = new ManualLadderCreator(height, noOfPerson);
+		return new LadderGame(ladderCreator);
 	}
 }

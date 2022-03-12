@@ -4,30 +4,27 @@ import core.NaturalNumber;
 import ladder.LadderGame;
 import ladder.Marker;
 import org.junit.jupiter.api.Test;
-import static creator.LadderCreatorFactory.LadderType.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LadderGameTest {
 	@Test
-	void testRunBigLadder() {
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(10), new NaturalNumber(6), RANDOM);
+	void testRunBigLadderWithDI() {
+		LadderGame ladderGame =LadderCreatorFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
 		Marker result = ladderGame.run(new Marker(2));
 		System.out.println(result);
 	}
 
 	@Test
-	public void testRunWhenRandomLadder() {
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), RANDOM);
+	public void testRunWhenRandomLadderWithDI() {
+		LadderGame ladderGame =LadderCreatorFactory.randomLadderGame(new NaturalNumber(3), new NaturalNumber(4));
 		Marker result = ladderGame.run(new Marker(2));
 		System.out.println(result);
 	}
 
 	@Test
-	public void testRunWhenManualLadder() {
-		LadderGame ladderGame = new LadderGame(new NaturalNumber(3), new NaturalNumber(4), MANUAL);
-		Marker result = ladderGame.run(new Marker(2));
-		System.out.println(result);
+	public void testRunWhenManualLadderWithDI() {
+		LadderGame ladderGame =LadderCreatorFactory.manualLadderGame(new NaturalNumber(3), new NaturalNumber(4));
 		ladderGame.drawLine(new NaturalNumber(1), new NaturalNumber(1));
 		ladderGame.drawLine(new NaturalNumber(2), new NaturalNumber(2));
 		ladderGame.drawLine(new NaturalNumber(3), new NaturalNumber(3));
