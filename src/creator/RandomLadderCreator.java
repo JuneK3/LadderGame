@@ -47,8 +47,6 @@ public class RandomLadderCreator implements LadderCreator {
 		NaturalNumber totalPositions = ladderSize.getTotalPosition();
 		int countOfLine = ladderSize.getCountOfLine(DEFAULT_LINE_RATIO);
 		ArrayList<RandomNaturalNumber> randomPositions = new ArrayList<>();
-		int i = 0;
-
 		do {
 			RandomNaturalNumber randomPosition = randInt(1, totalPositions.getNumber());
 			if (ladderSize.isMultipleOfPerson(randomPosition)) {
@@ -60,19 +58,17 @@ public class RandomLadderCreator implements LadderCreator {
 			if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() + 1))) {
 				continue;
 			}
-			if (randomPosition.equals(new RandomNaturalNumber(1))) {
+			if (randomPosition.isFirst()) {
 				randomPositions.add(randomPosition);
 				System.out.printf("random position: %s%n", randomPosition);
-				i++;
 			} else {
 				if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() - 1))) {
 					continue;
 				}
 				randomPositions.add(randomPosition);
 				System.out.printf("random position: %s%n", randomPosition);
-				i++;
 			}
-		} while (i < countOfLine);
+		} while (randomPositions.size() < countOfLine);
 
 		return randomPositions;
 	}

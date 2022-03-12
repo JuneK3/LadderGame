@@ -20,7 +20,7 @@ public class RandomNaturalNumber extends NaturalNumber {
 
 	public boolean isMultipleOfPerson(int noOfPerson) {
 		int remainder = getNumber() % noOfPerson;
-		if (remainder == 0){
+		if (remainder == 0) {
 			return true;
 		}
 		return false;

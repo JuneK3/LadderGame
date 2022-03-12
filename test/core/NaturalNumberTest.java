@@ -41,4 +41,12 @@ public class NaturalNumberTest {
 		NaturalNumber b = a.multiply(new NaturalNumber(4));
 		assertEquals(new NaturalNumber(12), b);
 	}
+
+	@Test
+	void testIsFirst() {
+		NaturalNumber randomNumber = new NaturalNumber(1);
+		assertTrue(randomNumber.isFirst());
+		randomNumber = new NaturalNumber(2);
+		assertFalse(randomNumber.isFirst());
+	}
 }

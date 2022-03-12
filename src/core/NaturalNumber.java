@@ -22,6 +22,10 @@ public class NaturalNumber {
 		return number;
 	}
 
+	public boolean isFirst() {
+		return getNumber() == 1;
+	}
+
 	public int toArrayIndex() {
 		return number - 1;
 	}
