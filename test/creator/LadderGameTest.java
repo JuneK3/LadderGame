@@ -5,7 +5,7 @@ import ladder.LadderGame;
 import ladder.Marker;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LadderGameTest {
 	@Test
@@ -13,6 +13,18 @@ public class LadderGameTest {
 		LadderGame ladderGame =LadderCreatorFactory.randomLadderGame(new NaturalNumber(10), new NaturalNumber(6));
 		Marker result = ladderGame.run(new Marker(2));
 		System.out.println(result);
+	}
+
+	@Test
+	public void testRunWhenRandomLadderAndDrawLine() {
+		try{
+			LadderGame ladderGame =LadderCreatorFactory.randomLadderGame(new NaturalNumber(3), new NaturalNumber(4));
+			ladderGame.drawLine(new NaturalNumber(3), new NaturalNumber(4));
+			fail();
+		}catch (UnsupportedOperationException e){
+			assertTrue(true);
+		}
+
 	}
 
 	@Test

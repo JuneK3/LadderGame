@@ -6,9 +6,9 @@ import ladder.Row;
 public class ManualLadderCreator implements LadderCreator {
 	private Row[] rows;
 
-	public ManualLadderCreator(NaturalNumber cntOfRow, NaturalNumber noOfPerson) {
-		rows = new Row[cntOfRow.getNumber()];
-		for (int i = 0; i < cntOfRow.getNumber(); i++) {
+	public ManualLadderCreator(NaturalNumber height, NaturalNumber noOfPerson) {
+		rows = new Row[height.getNumber()];
+		for (int i = 0; i < height.getNumber(); i++) {
 			rows[i] = new Row(noOfPerson);
 		}
 	}
