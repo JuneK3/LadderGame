@@ -1,6 +1,7 @@
 package creator;
 
 import core.NaturalNumber;
+import core.RandomNaturalNumber;
 import creator.RandomLadderCreator;
 import ladder.Position;
 import org.junit.jupiter.api.Test;
@@ -21,8 +22,8 @@ public class RandomLadderCreatorTest {
 
 	@Test
 	void testIsExisted() {
-		NaturalNumber[] startPositions = {new NaturalNumber(2), new NaturalNumber(3)};
-		assertTrue(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(2)));
-		assertFalse(RandomLadderCreator.isExisted(startPositions, new NaturalNumber(4)));
+		RandomNaturalNumber[] startPositions = {new RandomNaturalNumber(2), new RandomNaturalNumber(3)};
+		assertTrue(RandomLadderCreator.isExisted(startPositions, new RandomNaturalNumber(2)));
+		assertFalse(RandomLadderCreator.isExisted(startPositions, new RandomNaturalNumber(4)));
 	}
 }

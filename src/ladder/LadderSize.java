@@ -1,6 +1,7 @@
 package ladder;
 
 import core.NaturalNumber;
+import core.RandomNaturalNumber;
 
 public class LadderSize {
 	private NaturalNumber height;
@@ -19,29 +20,10 @@ public class LadderSize {
 		return new LadderSize(height, noOfPerson);
 	}
 
-	NaturalNumber getPositionOfHeight(NaturalNumber currentTotalPositions) {
-		double quotient = Math.ceil(currentTotalPositions.getNumber() / (double) noOfPerson.getNumber());
-		return new NaturalNumber((int) quotient);
-	}
-
-	NaturalNumber getPositionOfPerson(NaturalNumber currentTotalPositions) {
-		int remainder = currentTotalPositions.getNumber() % noOfPerson.getNumber();
-		if (remainder == 0) {
-			return noOfPerson;
-		}
-		return new NaturalNumber(remainder);
-	}
-
-	public Position getPosition(NaturalNumber currentTotalPosition){
-		return Position.create(getPositionOfHeight(currentTotalPosition), getPositionOfPerson(currentTotalPosition));
-	}
-
-	public NaturalNumber getHeight() {
-		return this.height;
-	}
-
-	public NaturalNumber getNoOfPerson() {
-		return this.noOfPerson;
+	public Position getPosition(RandomNaturalNumber currentTotalPosition){
+		int positionOfHeight = currentTotalPosition.getPositionOfHeight(noOfPerson.getNumber());
+		int positionOfPerson = currentTotalPosition.getPositionOfPerson(noOfPerson.getNumber());
+		return Position.create(positionOfHeight, positionOfPerson);
 	}
 
 	public int getCountOfLine(double ratio) {
@@ -53,11 +35,7 @@ public class LadderSize {
 		return height.multiply(noOfPerson);
 	}
 
-	public boolean isMultipleOfPerson(NaturalNumber randomPosition) {
-		int remainder = randomPosition.getNumber() % noOfPerson.getNumber();
-		if (remainder == 0){
-			return true;
-		}
-		return false;
+	public boolean isMultipleOfPerson(RandomNaturalNumber randomPosition) {
+		return randomPosition.isMultipleOfPerson(noOfPerson.getNumber());
 	}
 }
