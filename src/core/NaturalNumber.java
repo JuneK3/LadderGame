@@ -23,7 +23,11 @@ public class NaturalNumber {
 	}
 
 	public boolean isFirst() {
-		return getNumber() == 1;
+		return isFirst(getNumber());
+	}
+
+	public boolean isFirst(int number) {
+		return number == 1;
 	}
 
 	public int toArrayIndex() {

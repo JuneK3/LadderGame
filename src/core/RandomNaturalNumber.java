@@ -1,5 +1,7 @@
 package core;
 
+import java.util.ArrayList;
+
 public class RandomNaturalNumber extends NaturalNumber {
 	public RandomNaturalNumber(int number) {
 		super(number);
@@ -24,5 +26,24 @@ public class RandomNaturalNumber extends NaturalNumber {
 			return true;
 		}
 		return false;
+	}
+
+	public RandomNaturalNumber before() {
+		return new RandomNaturalNumber(toArrayIndex());
+	}
+
+	public RandomNaturalNumber next() {
+		return new RandomNaturalNumber(getNumber() + 1);
+	}
+
+	public ArrayList<RandomNaturalNumber> checkedNaturalNumbers(NaturalNumber noOfPerson) {
+		ArrayList<RandomNaturalNumber> naturalNumbers = new ArrayList<>();
+		int remainder = getNumber() % noOfPerson.getNumber();
+		if (!isFirst(remainder)) {
+			naturalNumbers.add(before());
+		}
+		naturalNumbers.add(this);
+		naturalNumbers.add(next());
+		return naturalNumbers;
 	}
 }

@@ -49,24 +49,17 @@ public class RandomLadderCreator implements LadderCreator {
 		ArrayList<RandomNaturalNumber> randomPositions = new ArrayList<>();
 		do {
 			RandomNaturalNumber randomPosition = randInt(1, totalPositions.getNumber());
+			System.out.printf("random position: %s\n", randomPosition);
 			if (ladderSize.isMultipleOfPerson(randomPosition)) {
 				continue;
 			}
-			if (randomPositions.contains(randomPosition)) {
-				continue;
-			}
-			if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() + 1))) {
-				continue;
-			}
-			if (randomPosition.isFirst()) {
+
+			ArrayList<RandomNaturalNumber> checkedNaturalNumbers = randomPosition.checkedNaturalNumbers(ladderSize.getNoOfPerson());
+			checkedNaturalNumbers.retainAll(randomPositions); // checkedNaturalNumbers에 교집합에 해당하는 원소들만 남김
+
+			if (checkedNaturalNumbers.isEmpty()){
 				randomPositions.add(randomPosition);
-				System.out.printf("random position: %s%n", randomPosition);
-			} else {
-				if (randomPositions.contains(new RandomNaturalNumber(randomPosition.getNumber() - 1))) {
-					continue;
-				}
-				randomPositions.add(randomPosition);
-				System.out.printf("random position: %s%n", randomPosition);
+				System.out.printf("add random position: %s\n", randomPosition);
 			}
 		} while (randomPositions.size() < countOfLine);
 

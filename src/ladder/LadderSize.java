@@ -38,4 +38,8 @@ public class LadderSize {
 	public boolean isMultipleOfPerson(RandomNaturalNumber randomPosition) {
 		return randomPosition.isMultipleOfPerson(noOfPerson.getNumber());
 	}
+
+	public NaturalNumber getNoOfPerson() {
+		return this.noOfPerson;
+	}
 }
